@@ -5,6 +5,12 @@ import csv
 import sys
 from config import AsanaConfig
 
+testmode = False
+if len(sys.argv) > 1:
+    if str(sys.argv[1] == 'test'):
+        print('test mode, getting only the first project')
+        testmode = True
+
 # Asana API base url
 base_asana_url = 'https://app.asana.com/api/1.0/'
 
@@ -99,6 +105,7 @@ while (next or first):
             next_url = response_json['next_page']['uri']
             first = False
             next = True
+
         else:
             print("died at FIRST")
             print(response.status_code)
@@ -126,7 +133,7 @@ while (next or first):
             first_id = project_json['data'][0]['gid']
 
             #print(first_id)
-            #exit()
+
 
         else:
             print("died at project_json")
@@ -176,7 +183,9 @@ while (next or first):
         exportfile.write(column_row+'\n')
         exportfile.close
 
-        #exit()
+
+        if(testmode == True):
+            exit()
 
 #print(response_json['next_page']['uri'])
 print("Done")
