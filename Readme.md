@@ -1,9 +1,7 @@
 # Asana Projects and Status Exporter
-Pull project list and latest status from Asana
-## Requirements
-* Write to csv
-* Python
-* Frequency: TBD
-* ...
+Pulls project list and latest status from Asana and writes the result to a CSV
 
-Code based off of Okta API tool
+Requires an Asana API key
+
+
+
